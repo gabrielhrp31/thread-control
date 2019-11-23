@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/trabalho_thread.dir/main.c.o CMakeFiles/trabalho_thread.dir/util.c.o  -o trabalho_thread 

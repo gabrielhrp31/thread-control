@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/winchester/Documents/CC/4° Periodo/SO/trabalho_thread/main.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+pthread.h
+-
+util.h
+/home/winchester/Documents/CC/4° Periodo/SO/trabalho_thread/util.h
+
+/home/winchester/Documents/CC/4° Periodo/SO/trabalho_thread/util.h
+

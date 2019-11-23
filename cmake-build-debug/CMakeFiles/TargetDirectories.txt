@@ -1,0 +1,3 @@
+/home/winchester/Documents/CC/4° Periodo/SO/trabalho_thread/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/winchester/Documents/CC/4° Periodo/SO/trabalho_thread/cmake-build-debug/CMakeFiles/trabalho_thread.dir
+/home/winchester/Documents/CC/4° Periodo/SO/trabalho_thread/cmake-build-debug/CMakeFiles/edit_cache.dir
