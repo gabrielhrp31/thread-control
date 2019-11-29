@@ -6,14 +6,12 @@
 
 #IncludeRegexTransform: 
 
-/home/winchester/Documents/CC/4° Periodo/SO/trabalho_thread/main.c
+/home/winchester/Documents/CC/4° Periodo/SO/trabalho_thread/util.c
 stdio.h
 -
-stdlib.h
--
-string.h
--
 pthread.h
+-
+stdlib.h
 -
 util.h
 /home/winchester/Documents/CC/4° Periodo/SO/trabalho_thread/util.h

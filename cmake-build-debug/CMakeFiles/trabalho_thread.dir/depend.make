@@ -5,4 +5,5 @@ CMakeFiles/trabalho_thread.dir/main.c.o: ../main.c
 CMakeFiles/trabalho_thread.dir/main.c.o: ../util.h
 
 CMakeFiles/trabalho_thread.dir/util.c.o: ../util.c
+CMakeFiles/trabalho_thread.dir/util.c.o: ../util.h
 
