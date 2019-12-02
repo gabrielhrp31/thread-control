@@ -14,13 +14,14 @@ T_PEOPLE *peoples_queue[MAX_PEOPLES];
 int peoples_pos = 0;
 
 
-
+//senta no assento do onibus
 void sit_down(T_PEOPLE *people)
 {
     printf("%s sentou\n", people->name);
     sleep(random_num(0,2));
 }
 
+//levanta do assento do onibus
 void put_up(T_PEOPLE *people){
     pthread_mutex_lock(&lock);
 
@@ -29,9 +30,11 @@ void put_up(T_PEOPLE *people){
     }
     peoples_pos--;
 
-    ordenate(peoples_queue);
 
     printf("%s levantou do assento\n", people->name);
+
+    //ordena a fila
+    ordenate(peoples_queue, peoples_pos);
 
     if(peoples_pos>0){
         pthread_cond_signal(&peoples_queue[0]->sig_consumer);
@@ -40,11 +43,13 @@ void put_up(T_PEOPLE *people){
     pthread_mutex_unlock(&lock);
 }
 
+//entra na fila
 void enter_queue(T_PEOPLE *people){
     peoples_queue[peoples_pos] = people;
     peoples_pos++;
 }
 
+//espera para então sentar
 void wait(T_PEOPLE *people) {
     printf("%s entrou no onibus\n", people->name);
 
@@ -59,13 +64,13 @@ void wait(T_PEOPLE *people) {
     pthread_mutex_unlock(&lock);
 }
 
+//sai do onibus
 void exit_bus(T_PEOPLE *people){
     printf("%s saiu do ônibus\n", people->name);
     sleep(random_num(0,2));
 }
 
-pthread_cond_t sig_producer= PTHREAD_COND_INITIALIZER;
-
+//realiza todo o proceeso da thread função principal da mesma
 void *to_sit(void *arg_people) {
 
     T_PEOPLE *people = (T_PEOPLE *) arg_people;
@@ -83,6 +88,7 @@ void *to_sit(void *arg_people) {
     return NULL;
 }
 
+//cria as threads de pessoas e assentos
 int main(int argc, char **argv) {
     pthread_t t_people[MAX_PEOPLES];
     int i,rc;

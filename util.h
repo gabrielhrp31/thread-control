@@ -16,7 +16,7 @@ typedef struct {
 
 int parse_arguments(int argc, char **argv);
 unsigned int random_num(unsigned int min,unsigned int max);
-void ordenate(T_PEOPLE *people_queue[MAX_PEOPLES]);
+void ordenate(T_PEOPLE *people_queue[MAX_PEOPLES], int people_pos);
 T_PEOPLE *new_people(int times);
 
 #endif //TRABALHO_THREAD_UTIL_H
