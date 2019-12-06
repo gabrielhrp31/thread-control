@@ -5,36 +5,46 @@
 #include <unistd.h>
 #include "util.h"
 
-
-
 pthread_mutex_t seat= PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t lock= PTHREAD_MUTEX_INITIALIZER;
 
 T_PEOPLE *peoples_queue[MAX_PEOPLES];
 int peoples_pos = 0;
 
-
 //senta no assento do onibus
 void sit_down(T_PEOPLE *people)
 {
     printf("%s sentou\n", people->name);
-    sleep(random_num(0,2));
+    sleep(1);
 }
 
 //levanta do assento do onibus
 void put_up(T_PEOPLE *people){
+
+
     pthread_mutex_lock(&lock);
 
+    //salva o ultimo a sentar
+    save_last(*peoples_queue[0]);
+    //remove um da fila
     for (int i = 0; i < peoples_pos-1; ++i) {
         peoples_queue[i] = peoples_queue[i+1];
     }
-    peoples_pos--;
 
+    peoples_pos--;
 
     printf("%s levantou do assento\n", people->name);
 
     //ordena a fila
-    ordenate(peoples_queue, peoples_pos);
+    int next_pos = next(peoples_queue, peoples_pos-1);
+
+    while (next_pos>0){
+        T_PEOPLE *aux;
+        aux = peoples_queue[next_pos];
+        peoples_queue[next_pos] = peoples_queue[next_pos-1];
+        peoples_queue[next_pos-1]=aux;
+        next_pos--;
+    }
 
     if(peoples_pos>0){
         pthread_cond_signal(&peoples_queue[0]->sig_consumer);
@@ -67,7 +77,7 @@ void wait(T_PEOPLE *people) {
 //sai do onibus
 void exit_bus(T_PEOPLE *people){
     printf("%s saiu do ônibus\n", people->name);
-    sleep(random_num(0,2));
+    sleep(random_num(5));
 }
 
 //realiza todo o proceeso da thread função principal da mesma
@@ -92,6 +102,7 @@ void *to_sit(void *arg_people) {
 int main(int argc, char **argv) {
     pthread_t t_people[MAX_PEOPLES];
     int i,rc;
+    srand(time(NULL)); // randomize seed
 
     int sitting_time = parse_arguments(argc, argv);
 
