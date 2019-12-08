@@ -20,5 +20,17 @@ unistd.h
 util.h
 /home/winchester/Documents/CC/4° Periodo/SO/trabalho_thread/util.h
 
+/home/winchester/Documents/CC/4° Periodo/SO/trabalho_thread/util.c
+stdio.h
+-
+pthread.h
+-
+string.h
+-
+stdlib.h
+-
+util.h
+/home/winchester/Documents/CC/4° Periodo/SO/trabalho_thread/util.h
+
 /home/winchester/Documents/CC/4° Periodo/SO/trabalho_thread/util.h
 

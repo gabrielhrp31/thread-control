@@ -10,7 +10,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
- 
 #define NUM_THREADS     5
  
 void *task_code(void *argument)
